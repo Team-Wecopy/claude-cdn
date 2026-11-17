@@ -1,7 +1,7 @@
-(function(){
-var CFG=window.LG||{},USERS=CFG.users||{},ACTIVE=CFG.active||[];
+window.LGinit=function(CFG){
+CFG=CFG||window.LG||{};var USERS=CFG.users||{},ACTIVE=CFG.active||[];
 var META={};
-var root=document.getElementById(CFG.el||'lg');if(!root)return;
+var root=document.getElementById(CFG.el||'lg');if(!root||root.dataset.lgOn)return;root.dataset.lgOn='1';
 var css=document.createElement('style');
 css.textContent='.lg-card{max-width:440px;margin:0 auto;background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}'+
 '.lg-f{margin-bottom:14px}.lg-f label{display:block;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.lg-f input{width:100%;box-sizing:border-box}'+
@@ -61,4 +61,5 @@ async function login(){pErr.textContent='';if(!sel){uErr.textContent='Escolha um
  if(await sha(sel+':pass:'+pv)===USERS[sel].p){pIn.value='';success('login completo')}else{pIn.value='';pErr.textContent='Senha incorreta'}}
 go.onclick=login;pIn.addEventListener('input',function(){pErr.textContent=''});pIn.addEventListener('keydown',function(e){if(e.key==='Enter')login()});
 out.onclick=function(){sel=null;resetFlow();mode();paint();done.style.display='none';form.style.display='block'};
-})();
+};
+if(window.LG&&window.LG.users)window.LGinit(window.LG);

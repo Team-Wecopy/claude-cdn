@@ -16,7 +16,7 @@ Assets estáticos e públicos servidos via jsDelivr para widgets do chat.
 
 ## Projetos
 
-- `login-sessao/`: tela de login. `login.js` (minificado, servido) e `login.src.js` (fonte). Configuração em `window.LG = {users: {id: {name, img, perfil, c, p}}, active: [...]}` antes do script.
+- `login-sessao/`: tela de login. `login.js` (minificado, servido) e `login.src.js` (fonte). Inicialização: `window.LGinit({users: {id: {name, img, perfil, c, p}}, active: [...]})` depois de carregar o script (independe da ordem de execução).
 
 ## Versões
 
