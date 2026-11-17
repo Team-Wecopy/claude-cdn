@@ -21,4 +21,5 @@ Assets estáticos e públicos servidos via jsDelivr para widgets do chat.
 ## Versões
 
 - `login-sessao` v1.0.0: `ec98893e87ad8d05352584f0c52437807b237ec5`
-- `login-sessao` v1.1.0: `3891ed29b7e457aa4075b021f76c84df743d72df` (atual)
+- `login-sessao` v1.1.0: `3891ed29b7e457aa4075b021f76c84df743d72df`
+- `login-sessao` v1.2.0: `6354d6c039a61352adc2ecfc43662203f8786fc4` (atual, sem troca de usuário após login)
