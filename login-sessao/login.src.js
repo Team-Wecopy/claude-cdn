@@ -31,8 +31,8 @@ var go=h('button',{text:'Entrar',style:'width:100%'});
 var form=h('div',null,[
  h('div',{style:'display:flex;align-items:center;justify-content:space-between;margin-bottom:16px'},[h('div',{style:'display:flex;align-items:center;gap:10px',html:'<i class="ti ti-lock" style="font-size:20px;color:var(--text-secondary)" aria-hidden="true"></i><div style="font-size:16px;font-weight:500">Entrar</div>'}),h('div',{style:'font-size:12px;color:var(--text-muted)',text:now().split(' · ')[0]})]),
  h('div',{class:'lg-f'},[h('label',{text:'Quem é você?'}),grid,uErr]),full,quick,go]);
-var doneAv=h('div',{class:'lg-av',style:'width:72px;height:72px;margin:0 auto 12px'}),welcome=h('div',{style:'font-size:18px;font-weight:500;margin:2px 0'}),stamp=h('div',{style:'font-size:13px;color:var(--text-muted);margin-bottom:16px'}),out=h('button',{text:'Trocar usuário'});
-var done=h('div',{style:'display:none;text-align:center;padding:1.25rem 0'},[doneAv,h('div',{style:'font-size:13px;color:var(--text-secondary)',text:'Expert dessa sessão'}),welcome,stamp,out]);
+var doneAv=h('div',{class:'lg-av',style:'width:72px;height:72px;margin:0 auto 12px'}),welcome=h('div',{style:'font-size:18px;font-weight:500;margin:2px 0'}),stamp=h('div',{style:'font-size:13px;color:var(--text-muted)'});
+var done=h('div',{style:'display:none;text-align:center;padding:1.25rem 0'},[doneAv,h('div',{style:'font-size:13px;color:var(--text-secondary)',text:'Expert dessa sessão'}),welcome,stamp]);
 root.appendChild(h('div',{style:'padding:1rem 0'},[h('div',{class:'lg-card'},[form,done])]));
 function paint(){Object.keys(cards).forEach(function(k){var c=cards[k],on=k===sel;c.el.setAttribute('aria-checked',on?'true':'false');
  c.el.style.border=on?'2px solid var(--fill-accent, #378ADD)':'0.5px solid var(--border)';c.el.style.padding=on?'12.5px 6.5px':'14px 8px';
@@ -60,6 +60,5 @@ async function login(){pErr.textContent='';if(!sel){uErr.textContent='Escolha um
  var pv=pIn.value;if(!pv){pErr.textContent='Digite a senha';return}
  if(await sha(sel+':pass:'+pv)===USERS[sel].p){pIn.value='';success('login completo')}else{pIn.value='';pErr.textContent='Senha incorreta'}}
 go.onclick=login;pIn.addEventListener('input',function(){pErr.textContent=''});pIn.addEventListener('keydown',function(e){if(e.key==='Enter')login()});
-out.onclick=function(){sel=null;resetFlow();mode();paint();done.style.display='none';form.style.display='block'};
 };
 if(window.LG&&window.LG.users)window.LGinit(window.LG);
